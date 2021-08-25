@@ -52,4 +52,56 @@ void oled_draw_string(uint8_t x, uint8_t y, char *str, uint8_t scale, uint8_t co
 	}
 }
 
+/*
+ * @fn      		  - oled_draw_string
+ *
+ * @param[in]         - x - start x axis position from 0 to 127
+ * @param[in]         - y - start y axis position from 0 to 63
+ * @param[in]         - scale - in scale 1 arrow is 5x5
+ * @param[in]         - direction -  param: @OLED_ARROW_DIRECTION
+ * @param[in]         - color - param: @OLED_COLOR
+ *
+ * @return            - None
+ *
+ * @Note              - This function draw arrow in buffer of display. (x, y) are a top of arrow
+ */
+void oled_draw_arrow(uint8_t x, uint8_t y, uint8_t scale, uint8_t direction, uint8_t color)
+{
+	if(direction == OLED_ARROW_UP)
+	{
+		ssd1306_draw_rectangle(x, y, scale, scale, color);
+		ssd1306_draw_rectangle(x - scale, y + scale, scale * 3, scale, color);
+		ssd1306_draw_rectangle(x - 2 * scale, y + 2 * scale, scale * 5, scale, color);
+		ssd1306_draw_rectangle(x, y + 3 * scale, scale, scale * 2, color);
+	}
+	else if(direction == OLED_ARROW_DOWN)
+	{
+		ssd1306_draw_rectangle(x, y, scale, scale, color);
+		ssd1306_draw_rectangle(x - scale, y - scale, scale * 3, scale, color);
+		ssd1306_draw_rectangle(x - 2 * scale, y - 2 * scale, scale * 5, scale, color);
+		ssd1306_draw_rectangle(x, y - 4 * scale, scale, scale * 2, color);
+	}
+	else if(direction == OLED_ARROW_LEFT)
+	{
+		ssd1306_draw_rectangle(x, y, scale, scale, color);
+		ssd1306_draw_rectangle(x + scale, y - scale, scale, scale * 3, color);
+		ssd1306_draw_rectangle(x + 2 * scale, y - 2 * scale, scale, scale * 5, color);
+		ssd1306_draw_rectangle(x + 3 * scale, y, scale * 2, scale, color);
+	}
+	else if(direction == OLED_ARROW_RIGHT)
+	{
+		ssd1306_draw_rectangle(x, y, scale, scale, color);
+		ssd1306_draw_rectangle(x - scale, y - scale, scale, scale * 3, color);
+		ssd1306_draw_rectangle(x - 2 * scale, y - 2 * scale, scale, scale * 5, color);
+		ssd1306_draw_rectangle(x - 4 * scale, y, scale * 2, scale, color);
+	}
+
+
+}
+
+
+
+
+
+
 
