@@ -168,7 +168,7 @@ void ssd1306_draw_pixel(uint8_t x, uint8_t y, uint8_t color)
  *
  * @Note              - This function draw horizontal line in buffer of display. x + length <= 128
  */
-void ssd1306_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color)
+void ssd1306_draw_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color)
 {
 	uint8_t page, cell;
 	uint16_t cell_idx;
@@ -209,7 +209,7 @@ void ssd1306_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color
  *
  * @Note              - This function draw vertical line in buffer of display. y + length <= 64
  */
-void ssd1306_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color)
+void ssd1306_draw_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color)
 {
 	uint8_t page, cell, cell_pos;
 	uint16_t cell_idx;
@@ -266,11 +266,11 @@ void ssd1306_draw_rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height,
 		{
 			if(color == SSD_1306_COLOR_BLACK)
 			{
-				ssd1306_horizontal_line(x, i, width, SSD_1306_COLOR_BLACK);
+				ssd1306_draw_horizontal_line(x, i, width, SSD_1306_COLOR_BLACK);
 			}
 			else if(color == SSD_1306_COLOR_WHITE)
 			{
-				ssd1306_horizontal_line(x, i, width, SSD_1306_COLOR_WHITE);
+				ssd1306_draw_horizontal_line(x, i, width, SSD_1306_COLOR_WHITE);
 			}
 		}
 
@@ -290,7 +290,7 @@ void ssd1306_draw_rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height,
  *
  * @Note              - This function draw string in buffer of display.
  */
-void draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color)
+void ssd1306_draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color)
 {
 	uint8_t page, cell, cell_pos;
 	uint16_t cell_idx;

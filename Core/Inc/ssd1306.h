@@ -103,9 +103,9 @@ void ssd1306_init(void);
 void ssd1306_display_clear(void);
 void ssd1306_display_show(void);
 void ssd1306_draw_pixel(uint8_t x, uint8_t y, uint8_t color);
-void ssd1306_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
-void ssd1306_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
+void ssd1306_draw_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
+void ssd1306_draw_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
 void ssd1306_draw_rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color);
-void draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color);
+void ssd1306_draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color);
 uint8_t* ssd1306_get_buffer(void);
 #endif /* INC_SSD1306_H_ */

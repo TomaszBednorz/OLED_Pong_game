@@ -6,7 +6,7 @@ Small home project of OLED Pong game. 2 players can play in very easy game by 2 
 ## Functionalities
 - User can choose limit of points in game
 - User can choose 3 letters nickname in game
-- User can check results of last 5 games
+- User can check results of last 3 games
 - Game is a little bit harder every few seconds
 
 ## Bill of materials

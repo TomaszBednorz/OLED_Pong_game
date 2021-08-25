@@ -23,7 +23,7 @@ void oled_draw_char(uint8_t x, uint8_t y, char ch, uint8_t scale, uint8_t color)
 
 	for(int i = iterator; i < iterator + 5; i++)
 	{
-		draw_byte_vertical(x, y, font5x7[i], scale, color);
+		ssd1306_draw_byte_vertical(x, y, font5x7[i], scale, color);
 		x += scale;
 	}
 
