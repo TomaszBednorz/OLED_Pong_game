@@ -235,14 +235,11 @@ void ssd1306_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color)
 
 			buffer[cell_idx] = cell;
 
+			cell_pos++;
 			if(cell_pos >= 8)
 			{
 				cell_pos = 0;
 				cell_idx += 128;
-			}
-			else
-			{
-				cell_pos++;
 			}
 		}
 	}
@@ -278,6 +275,106 @@ void ssd1306_draw_rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height,
 		}
 
 	}
+}
+
+/*
+ * @fn      		  - draw_byte_vertical
+ *
+ * @param[in]         - x - start x axis position from 0 to 127
+ * @param[in]         - y - start y axis position from 0 to 63
+ * @param[in]         - byte - byte to draw (8pixels)
+ * @param[in]         - scale - e. g. in scale 2 pixel is 2x2
+ * @param[in]         - color - param: @SSD1306_COLOR
+ *
+ * @return            - None
+ *
+ * @Note              - This function draw string in buffer of display.
+ */
+void draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color)
+{
+	uint8_t page, cell, cell_pos;
+	uint16_t cell_idx;
+
+	page = y / 8;
+	cell_idx = SSD1306_COLUMNS * page + x;
+	cell_pos = y % 8;
+
+	uint8_t mask = 0x01;
+
+	if(scale == 1)
+	{
+		while(mask != 0x00)
+		{
+			cell = buffer[cell_idx];
+
+			if(byte & mask)
+			{
+				if(color == SSD_1306_COLOR_BLACK)
+				{
+					cell &= ~(1 << (cell_pos));
+				}
+				else if(color == SSD_1306_COLOR_WHITE)
+				{
+					cell |= (1 << (cell_pos));
+				}
+			}
+			else
+			{
+				if(color == SSD_1306_COLOR_BLACK)
+				{
+					cell |= (1 << (cell_pos));
+				}
+				else if(color == SSD_1306_COLOR_WHITE)
+				{
+					cell &= ~(1 << (cell_pos));
+				}
+			}
+
+			buffer[cell_idx] = cell;
+
+			cell_pos++;
+
+			if(cell_pos >= 8)
+			{
+				cell_pos = 0;
+				cell_idx += 128;
+			}
+
+			mask = mask << 1;
+
+		}
+	}
+	else
+	{
+		while(mask != 0x00)
+		{
+			if(byte & mask)
+			{
+				if(color == SSD_1306_COLOR_BLACK)
+				{
+					ssd1306_draw_rectangle(x, y, scale, scale, SSD_1306_COLOR_BLACK);
+				}
+				else if(color == SSD_1306_COLOR_WHITE)
+				{
+					ssd1306_draw_rectangle(x, y, scale, scale, SSD_1306_COLOR_WHITE);
+				}
+			}
+			else
+			{
+				if(color == SSD_1306_COLOR_BLACK)
+				{
+					ssd1306_draw_rectangle(x, y, scale, scale, SSD_1306_COLOR_WHITE);
+				}
+				else if(color == SSD_1306_COLOR_WHITE)
+				{
+					ssd1306_draw_rectangle(x, y, scale, scale, SSD_1306_COLOR_BLACK);
+				}
+			}
+			y += scale;
+			mask = mask << 1;
+		}
+	}
+
 }
 
 /*

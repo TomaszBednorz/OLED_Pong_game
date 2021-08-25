@@ -91,7 +91,7 @@ extern I2C_HandleTypeDef hi2c1;
  * Defines helpful as function parameters
  */
 
-// Color of pixel @SSD1306_COLOR
+// Color of pixel, param: @SSD1306_COLOR
 #define SSD_1306_COLOR_BLACK	0
 #define SSD_1306_COLOR_WHITE	1
 
@@ -106,5 +106,6 @@ void ssd1306_draw_pixel(uint8_t x, uint8_t y, uint8_t color);
 void ssd1306_horizontal_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
 void ssd1306_vertical_line(uint8_t x, uint8_t y, uint8_t length, uint8_t color);
 void ssd1306_draw_rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color);
+void draw_byte_vertical(uint8_t x, uint8_t y, uint8_t byte, uint8_t scale, uint8_t color);
 uint8_t* ssd1306_get_buffer(void);
 #endif /* INC_SSD1306_H_ */
