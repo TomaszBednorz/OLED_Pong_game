@@ -7,7 +7,7 @@ Small home project of OLED Pong game. 2 players can play in very easy game by 2 
 - User can choose limit of points in game
 - User can choose 3 letters nickname in game
 - User can check results of last 3 games
-- Game is a little bit harder every few seconds
+- Game is a harder after 10 and 20 seconds
 
 ## Bill of materials
 - STM32F072RB Nucleo
@@ -24,4 +24,4 @@ Small home project of OLED Pong game. 2 players can play in very easy game by 2 
 - [x] Nickname implementation
 - [x] Pong game implementation
 - [x] Last results implementation
-- [ ] Comments actualization && bug revision
+- [x] Comments actualization && bug revision
