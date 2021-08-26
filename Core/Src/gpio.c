@@ -1,6 +1,5 @@
 #include "gpio.h"
 
-uint8_t button_read(uint8_t button);
 
 void gpio_init()
 {

@@ -34,6 +34,6 @@ uint8_t button_read(uint8_t button);
 #define BUTTON_PUSHED				1
 
 void gpio_init();
-
+uint8_t button_read(uint8_t button);
 
 #endif /* INC_GPIO_H_ */

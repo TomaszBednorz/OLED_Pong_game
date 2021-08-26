@@ -1,8 +1,6 @@
 #include "oled.h"
 
 
-
-
 /*
  * @fn      		  - oled_draw_char
  *
@@ -63,7 +61,7 @@ void oled_draw_string(uint8_t x, uint8_t y, char *str, uint8_t scale, uint8_t co
  *
  * @return            - None
  *
- * @Note              - This function draw arrow in buffer of display. (x, y) are a top of arrow
+ * @Note              - This function draw arrow in buffer of display. (x, y) are a top of arrow (left, up corner of this pixel)
  */
 void oled_draw_arrow(uint8_t x, uint8_t y, uint8_t scale, uint8_t direction, uint8_t color)
 {
@@ -95,8 +93,6 @@ void oled_draw_arrow(uint8_t x, uint8_t y, uint8_t scale, uint8_t direction, uin
 		ssd1306_draw_rectangle(x - 2 * scale, y - 2 * scale, scale, scale * 5, color);
 		ssd1306_draw_rectangle(x - 4 * scale, y, scale * 2, scale, color);
 	}
-
-
 }
 
 

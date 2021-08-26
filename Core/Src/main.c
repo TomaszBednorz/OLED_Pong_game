@@ -12,7 +12,7 @@ int main(void)
 	gpio_init();
 	// Basic initializations - END
 
-	srand(time(NULL));
+	srand(time(NULL)); // set starting point in producing of pseudo random integers
 
 
 	while (1)
