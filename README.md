@@ -20,8 +20,8 @@ Small home project of OLED Pong game. 2 players can play in very easy game by 2 
 ## TODO list
 - [x] SSD1306 driver library
 - [x] OLED display library
-- [ ] Main menu implementation
-- [ ] Nickname implementation
-- [ ] Pong game implementation
+- [x] Main menu implementation
+- [x] Nickname implementation
+- [x] Pong game implementation
 - [x] Last results implementation
 - [ ] Comments actualization && bug revision
