@@ -25,3 +25,9 @@ Small home project of OLED Pong game. 2 players can play in very easy game by 2 
 - [x] Pong game implementation
 - [x] Last results implementation
 - [x] Comments actualization && bug revision
+
+## Electrical diagram
+![OLED_Pong_game_image](https://user-images.githubusercontent.com/62250785/131014778-0a850b10-7a53-4a1c-b624-08d2cecafd06.PNG)
+
+## Video
+https://user-images.githubusercontent.com/62250785/131015988-b498519c-d087-403e-9cff-abf5f7ad8da0.mp4
