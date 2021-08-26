@@ -12,6 +12,8 @@ char int_to_char[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
  *  Static functions prototypes
  */
 
+static void game_default_config(void);
+static void last_results_default_config(void);
 static void start_game_screen(void);
 static void main_menu_screen(uint8_t game_state);
 static void play_state(void);
@@ -32,6 +34,8 @@ void main_menu(void)
 	uint8_t last_game_state = 0;
 
 	game.max_points = 3;
+	game_default_config();
+	last_results_default_config();
 
 	start_game_screen();
 
@@ -76,8 +80,13 @@ void main_menu(void)
 				default:
 					break;
 			}
-			main_menu_screen(game_state);
-			HAL_Delay(100);  // debouncing protection and break after click
+
+			if(game_state != GAME_STATE_EXIT)
+			{
+				main_menu_screen(game_state);
+				HAL_Delay(100);  // debouncing protection and break after click
+			}
+
 		}
 
 		if(game_state != last_game_state)
@@ -90,6 +99,28 @@ void main_menu(void)
 	}
 }
 
+static void game_default_config(void)
+{
+	game.player1_name[0] = 'A';
+	game.player1_name[1] = 'A';
+	game.player1_name[2] = 'A';
+	game.player1_name[3] = '\0';
+	game.player2_name[0] = 'A';
+	game.player2_name[1] = 'A';
+	game.player2_name[2] = 'A';
+	game.player2_name[3] = '\0';
+	game.player1_points = 0;
+	game.player2_points = 0;
+	// position config
+}
+
+static void last_results_default_config(void)
+{
+	for(int i = 0; i < 3; i++)
+	{
+		last_results[i] = game;
+	}
+}
 
 static void start_game_screen(void)
 {
@@ -200,5 +231,23 @@ static void settings_state(void)
 
 static void results_state(void)
 {
+	uint8_t results_y = 0;
 
+	ssd1306_display_clear();
+
+	for(int i = 0; i < 3; i++)
+	{
+		oled_draw_string(4, results_y, last_results[i].player1_name, 2, OLED_COLOR_WHITE);
+		oled_draw_char(48, results_y, int_to_char[last_results[i].player1_points], 2, OLED_COLOR_WHITE);
+		oled_draw_char(59, results_y, ':', 2, OLED_COLOR_WHITE);
+		oled_draw_char(70, results_y, int_to_char[last_results[i].player2_points], 2, OLED_COLOR_WHITE);
+		oled_draw_string(92, results_y, last_results[i].player2_name, 2, OLED_COLOR_WHITE);
+		results_y += 15;
+	}
+
+	oled_draw_string(42, 48, "EXIT", 2, OLED_COLOR_WHITE);
+	ssd1306_draw_horizontal_line(42, 63, 44, OLED_COLOR_WHITE);
+	ssd1306_display_show();
+
+	while(button_read(BUTTON_ACCEPT) != BUTTON_PUSHED);  // Click accept button to go to main menu
 }

@@ -7,8 +7,8 @@
 typedef struct
 {
 	uint8_t max_points;
-	char player1_name[3];
-	char player2_name[3];
+	char player1_name[4];
+	char player2_name[4];
 	uint8_t player1_points;
 	uint8_t player2_points;
 	uint8_t player1_position;
