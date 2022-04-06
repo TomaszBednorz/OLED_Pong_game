@@ -1,7 +1,7 @@
 # OLED_Pong_game
 
 ## Description
-Small home project of OLED Pong game. 2 players can play in very easy game by 2 buttons for each. Project is written in STM32CubeIDE, without CubeMX code generator. 
+Small home project of OLED Pong game. 2 players can play in very easy game by 2 buttons for each. Project was written in STM32CubeIDE, without CubeMX code generator. 
 
 ## Functionalities
 - User can choose limit of points in game
